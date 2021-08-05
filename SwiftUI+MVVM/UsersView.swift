@@ -28,7 +28,11 @@ extension UsersView {
     class UsersViewModel: ObservableObject {
         @Published var users = [User]()
         
-        let dataService = AppDataService()
+        let dataService: DataService
+        
+        init(dataService: DataService = AppDataService()) {
+            self.dataService = dataService
+        }
         
         func getUsers() {
             dataService.getUsers { [weak self] users in
