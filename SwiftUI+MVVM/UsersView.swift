@@ -15,6 +15,7 @@ struct UsersView: View {
         List(viewModel.users) { user in
             Text(user.name)
         }
+        .onAppear(perform: viewModel.getUsers)
     }
 }
 
@@ -22,6 +23,14 @@ extension UsersView {
     
     class UsersViewModel: ObservableObject {
         @Published var users = [User]()
+        
+        let dataService = AppDataService()
+        
+        func getUsers() {
+            dataService.getUsers { [weak self] users in
+                self?.users = users
+            }
+        }
     }
     
 }
