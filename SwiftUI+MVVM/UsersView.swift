@@ -9,7 +9,11 @@ import SwiftUI
 
 struct UsersView: View {
     
-    @StateObject var viewModel = UsersView.UsersViewModel()
+    @StateObject var viewModel: UsersViewModel
+    
+    init(viewModel: UsersViewModel = .init()) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     
     var body: some View {
         List(viewModel.users) { user in
@@ -37,6 +41,9 @@ extension UsersView {
 
 struct UsersView_Previews: PreviewProvider {
     static var previews: some View {
-        UsersView()
+        let viewModel = UsersView.UsersViewModel()
+        viewModel.users = [User(id: 42, name: "Test")]
+        
+        return UsersView(viewModel: viewModel)
     }
 }
