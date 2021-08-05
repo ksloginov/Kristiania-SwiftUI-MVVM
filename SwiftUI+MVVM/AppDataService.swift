@@ -9,11 +9,13 @@ import Foundation
 
 class AppDataService {
     func getUsers(completion: @escaping ([User]) -> Void) {
-        completion([
-            User(id: 1, name: "Konstantin"),
-            User(id: 2, name: "Adam"),
-            User(id: 3, name: "Eva")
-        ])
+        DispatchQueue.main.async {
+            completion([
+                User(id: 1, name: "Konstantin"),
+                User(id: 2, name: "Adam"),
+                User(id: 3, name: "Eva")
+            ])
+        }
     }
 }
 
