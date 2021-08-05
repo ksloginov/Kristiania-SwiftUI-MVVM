@@ -14,6 +14,14 @@ struct UsersView: View {
     }
 }
 
+extension UsersView {
+    
+    class UsersViewModel: ObservableObject {
+        @Published var users: [User]
+    }
+    
+}
+
 struct UsersView_Previews: PreviewProvider {
     static var previews: some View {
         UsersView()
