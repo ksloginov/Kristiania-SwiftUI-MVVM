@@ -19,7 +19,7 @@ class SwiftUI_MVVMTests: XCTestCase {
     var viewModel: UsersView.UsersViewModel!
 
     override func setUpWithError() throws {
-        viewModel = .init()
+        viewModel = .init(dataService: MockedDataService())
     }
 
     override func tearDownWithError() throws {
