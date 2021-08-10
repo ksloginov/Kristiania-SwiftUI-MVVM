@@ -13,7 +13,7 @@ protocol DataService {
 
 class AppDataService: DataService {
     func getUsers(completion: @escaping ([User]) -> Void) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             completion([
                 User(id: 1, name: "Konstantin"),
                 User(id: 2, name: "Adam"),
