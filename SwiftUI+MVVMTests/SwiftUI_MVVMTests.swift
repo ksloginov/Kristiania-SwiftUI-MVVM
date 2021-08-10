@@ -19,10 +19,17 @@ class SwiftUI_MVVMTests: XCTestCase {
     var viewModel: UsersView.UsersViewModel!
 
     override func setUpWithError() throws {
-        viewModel = .init(dataService: MockedDataService())
+        viewModel = .init()
     }
 
     override func tearDownWithError() throws {
         viewModel = nil
+    }
+    
+    func testGetUsers() {
+        XCTAssertEqual(0, viewModel.users.count)
+        viewModel.getUsers()
+        XCTAssertEqual(1, viewModel.users.count)
+        XCTAssertEqual("Leroy", viewModel.users[0].name)
     }
 }
