@@ -9,12 +9,8 @@ import SwiftUI
 
 struct UsersView: View {
     
-    @ObservedObject var viewModel: UsersViewModel
-    
-    init(viewModel: UsersViewModel = .init()) {
-        self.viewModel = viewModel
-    }
-    
+    @StateObject var viewModel: UsersViewModel = UsersViewModel(dataService: AppDataService())
+
     var body: some View {
         List(viewModel.users) { user in
             Text(user.name)
